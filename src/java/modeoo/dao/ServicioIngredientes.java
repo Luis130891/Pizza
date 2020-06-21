@@ -61,7 +61,7 @@ public class ServicioIngredientes implements Serializable{
             stm.clearParameters();
            try(ResultSet rs = stm.executeQuery();){
                while(rs.next()){
-                  ingredientes.add(new Ingrediente(rs.getString(1),rs.getDouble(2),rs.getInt(3)));
+                  ingredientes.add(new Ingrediente(rs.getString(1),rs.getInt(2)));
                }
            }
         }catch(SQLException ex){
@@ -74,7 +74,7 @@ public class ServicioIngredientes implements Serializable{
     public static void main(String[] args) {
         ServicioIngredientes.obtenerInstancia();
     }
-    private String CMD_LISTAR="select id,nombre,precio from ingrediente;";
+    private String CMD_LISTAR="select id,nombre from ingrediente;";
     
     
     

@@ -12,20 +12,40 @@ import java.util.ArrayList;
  * @author Luis Venegas Ulloa
  */
 public class Pizza {
+    
+    private int id;
     private String nombre;
-    private String tamaño;
     private double precio;
     ArrayList<Ingrediente> ingredientes;
 
     public Pizza() {
-        this("","", 0,new ArrayList<Ingrediente>());
+        this(0,"",0.0,null);
     }
 
-    public Pizza(String nombre, String tamaño, double precio, ArrayList<Ingrediente> ingredientes) {
+    public Pizza(int id, String nombre, double precio, ArrayList<Ingrediente> ingredientes) {
+        this.id = id;
         this.nombre = nombre;
-        this.tamaño = tamaño;
         this.precio = precio;
         this.ingredientes = ingredientes;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Pizza{id=").append(id);
+        sb.append(", nombre=").append(nombre);
+        sb.append(", precio=").append(precio);
+        sb.append(", ingredientes=").append(ingredientes);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -34,14 +54,6 @@ public class Pizza {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getTamaño() {
-        return tamaño;
-    }
-
-    public void setTamaño(String tamaño) {
-        this.tamaño = tamaño;
     }
 
     public double getPrecio() {
@@ -59,4 +71,5 @@ public class Pizza {
     public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
         this.ingredientes = ingredientes;
     }
+
 }
