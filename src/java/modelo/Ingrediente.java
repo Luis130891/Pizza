@@ -11,20 +11,18 @@ package modelo;
  */
 public class Ingrediente {
     private String nombre;
-    private double precio;
     private int id;
 
     @Override
     public String toString() {
-        return "Ingrediente{" + "nombre=" + nombre + ", precio=" + precio + ", id=" + id + '}';
+        return "Ingrediente{" + "nombre=" + nombre + ", id=" + id + '}';
     }
 
     public Ingrediente() {
     }
 
-    public Ingrediente(String nombre, double precio, int id) {
+    public Ingrediente(String nombre, int id) {
         this.nombre = nombre;
-        this.precio = precio;
         this.id = id;
     }
 
@@ -36,13 +34,6 @@ public class Ingrediente {
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
 
     public int getId() {
         return id;
