@@ -1,0 +1,113 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21-jun-2020, 18:27:23
+    Author     : Luis Venegas Ulloa
+*/
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background: #f4f6ff;
+}
+
+header{
+    background: white;
+    height: 60px;
+    width: 100%;
+}
+#wrapper{
+    display: flex;
+}
+
+#categoria{
+    margin: 16px 6px 16px 4%;
+    padding: 16px;
+    background: white;
+    border-radius: 5px;
+    width: 15%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+#categoria input{
+    height: 50px;
+    background-color: white;
+    border-style: none;
+    text-align: left;
+}
+
+#menu{
+    margin: 16px 16px 16px 6px;
+    padding: 16px;
+    background: white;
+    border-radius: 5px;
+    width: 60%;
+    text-align: center;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+
+
+}
+
+#principal tr {
+    height: 100px;
+}
+
+#principal td {
+    border-top:darkgray solid 1px;
+    padding-left: 20px;    
+}
+
+
+.material-icons{
+
+}
+
+.btn{
+    background-image: url('imagenes/car.png');
+    background-repeat: no-repeat;
+    width: 90px;
+    height: 90px;
+    background-size:50px;
+    border: none;
+    background-color: transparent;
+    background-position: center;
+
+}
+
+
+.imaPizza{
+    height: 90px;
+    width: 110px;
+}
+
+#hCar{
+    background-image: url('imagenes/car.png');
+    background-repeat: no-repeat;
+    height:inherit;
+    width: 5%;
+    background-size:40%;
+    border: none;
+    background-color: transparent;
+    background-position: center;
+    position: relative;
+    float:right;
+    padding: 0px 15px 0px 15px;
+    color:aqua;
+    text-align: left;
+    font-size: large;
+    font-weight: 900;
+}
+
+.total{
+/*    height: inherit;*/
+}

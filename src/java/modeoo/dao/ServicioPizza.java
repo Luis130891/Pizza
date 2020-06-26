@@ -5,6 +5,8 @@
  */
 package modeoo.dao;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +17,7 @@ import java.util.Properties;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+import javax.xml.bind.JAXBException;
 import modelo.Ingrediente;
 import modelo.Pizza;
 
@@ -53,7 +56,13 @@ public class ServicioPizza {
         return instancia;
     }
 
-    public ArrayList<Pizza> pizzas() {
+    
+     public String datosJSON(ArrayList<Pizza> p) throws JAXBException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(p);
+    }
+    
+    public ArrayList<Pizza> pizzas() throws JAXBException {
         ArrayList<Pizza> pizzas = new ArrayList();
         try (Connection cnx = ds.getConnection(usuario,contraseña);
                 PreparedStatement stm = cnx.prepareCall(CMD_LISTAR);) {
@@ -65,7 +74,7 @@ public class ServicioPizza {
                    if(id_anterior!=rs.getInt(1)){
                        ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
                        ingredientes.add(new Ingrediente(rs.getString(5),rs.getInt(4)));
-                       pizzas.add(new Pizza(rs.getInt(1),rs.getString(2),rs.getDouble(3),ingredientes));
+                       pizzas.add(new Pizza(rs.getInt(1),0,0,rs.getString(2),rs.getDouble(3),ingredientes));
                        i++;
                        id_anterior=rs.getInt(1);
                    }else{
@@ -77,15 +86,13 @@ public class ServicioPizza {
             System.out.printf("ERROR-->%s",e.getMessage());
         }
         
-        System.out.println("cantidad :"+pizzas.size());
+        System.out.println(datosJSON(pizzas));
         return pizzas;
     }
 
     
-    
-    
     private static final String CMD_LISTAR
-            = "select p.id,p.nombre,p.precio,i.id, i.nombre from ingrediente i,pizza p,detalleIngrediente d"
+            = "select p.id,p.nombre,p.precio,i.id, i.nombre from  ingrediente i,pizza p,detalleIngrediente d"
             + " where i.id=d.pk_id_ingrediente_fk and d.pk_id_pizza_fk= p.id ;";
     private String contraseña;
     private String usuario;

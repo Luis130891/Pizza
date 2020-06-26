@@ -14,31 +14,11 @@ import java.util.ArrayList;
 public class Pizza {
     
     private int id;
+    private float tamaño;
+    private int cantidad;
     private String nombre;
     private double precio;
     ArrayList<Ingrediente> ingredientes;
-
-    public Pizza() {
-        this(0,"",0.0,null);
-    }
-
-    public Pizza(int id, String nombre, double precio, ArrayList<Ingrediente> ingredientes) {
-        this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.ingredientes = ingredientes;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Pizza{id=").append(id);
-        sb.append(", nombre=").append(nombre);
-        sb.append(", precio=").append(precio);
-        sb.append(", ingredientes=").append(ingredientes);
-        sb.append('}');
-        return sb.toString();
-    }
 
     public int getId() {
         return id;
@@ -46,6 +26,22 @@ public class Pizza {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public float getTamaño() {
+        return tamaño;
+    }
+
+    public void setTamaño(float tamaño) {
+        this.tamaño = tamaño;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public String getNombre() {
@@ -70,6 +66,24 @@ public class Pizza {
 
     public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
         this.ingredientes = ingredientes;
+    }
+
+    @Override
+    public String toString() {
+        return "Pizza{" + "id=" + id + ", tama\u00f1o=" + tamaño + ", cantidad=" + cantidad + ", nombre=" + nombre + ", precio=" + precio + ", ingredientes=" + ingredientes + '}';
+    }
+
+    public Pizza(int id, float tamaño, int cantidad, String nombre, double precio, ArrayList<Ingrediente> ingredientes) {
+        this.id = id;
+        this.tamaño = tamaño;
+        this.cantidad = cantidad;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.ingredientes = ingredientes;
+    }
+
+    public Pizza() {
+        this(0,0,0,"",0.0,null);
     }
 
 }
