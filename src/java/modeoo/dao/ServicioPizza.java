@@ -22,8 +22,11 @@ import modelo.Ingrediente;
 import modelo.Pizza;
 
 /**
- *
- * @author Luis Venegas Ulloa
+ *      EIF209 - Programación 4 – Proyecto #2 
+ *      Junio 2020 
+ *          Autores: 
+ *          116720428Kenneth Ariel Chaves Herrera
+ *          702000163 Luis Venegas Ulloa
  */
 public class ServicioPizza {
 
@@ -62,8 +65,9 @@ public class ServicioPizza {
         return gson.toJson(p);
     }
     
+      
     public ArrayList<Pizza> pizzas() throws JAXBException {
-        ArrayList<Pizza> pizzas = new ArrayList();
+        ArrayList<Pizza> pizzas = new ArrayList<Pizza> ();
         try (Connection cnx = ds.getConnection(usuario,contraseña);
                 PreparedStatement stm = cnx.prepareCall(CMD_LISTAR);) {
             stm.clearParameters();
@@ -71,10 +75,10 @@ public class ServicioPizza {
                int id_anterior=0;
                int i=0;
                while(rs.next()){
-                   if(id_anterior!=rs.getInt(1)){
+                   if(id_anterior != rs.getInt(1)){
                        ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
                        ingredientes.add(new Ingrediente(rs.getString(5),rs.getInt(4)));
-                       pizzas.add(new Pizza(rs.getInt(1),0,0,rs.getString(2),rs.getDouble(3),ingredientes));
+                       pizzas.add(new Pizza(rs.getInt(1),"",0,rs.getString(2),rs.getDouble(3),ingredientes));
                        i++;
                        id_anterior=rs.getInt(1);
                    }else{
@@ -86,14 +90,12 @@ public class ServicioPizza {
             System.out.printf("ERROR-->%s",e.getMessage());
         }
         
-        System.out.println(datosJSON(pizzas));
         return pizzas;
     }
-
     
     private static final String CMD_LISTAR
             = "select p.id,p.nombre,p.precio,i.id, i.nombre from  ingrediente i,pizza p,detalleIngrediente d"
-            + " where i.id=d.pk_id_ingrediente_fk and d.pk_id_pizza_fk= p.id ;";
+            + " where i.id=d.pk_id_ingrediente_fk and d.pk_id_pizza_fk= p.id order by 1 ;";
     private String contraseña;
     private String usuario;
     private DataSource ds;

@@ -6,15 +6,19 @@
 package modelo;
 
 /**
- *
- * @author Luis Venegas Ulloa
+ *      EIF209 - Programación 4 – Proyecto #2 
+ *      Junio 2020 
+ *          Autores: 
+ *          116720428Kenneth Ariel Chaves Herrera
+ *          702000163 Luis Venegas Ulloa
  */
 public class Cliente {
+
     private int cedula;
     private String nombre;
     private String apellidos;
     private String dirección;
-    private int  telefono;
+    private int telefono;
     private Usuario usuario;
 
     public Cliente() {
@@ -27,6 +31,11 @@ public class Cliente {
         this.dirección = dirección;
         this.telefono = telefono;
         this.usuario = usuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direcci\u00f3n=" + dirección + ", telefono=" + telefono + ", usuario=" + usuario + '}';
     }
 
     public int getCedula() {
@@ -76,5 +85,5 @@ public class Cliente {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
- 
+
 }

@@ -7,17 +7,18 @@ package servle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.JAXBException;
-import modeoo.dao.ServicioComplemento;
-import modeoo.dao.ServicioPizza;
+import modelo.Factura;
+import modeoo.dao.ServicioPizzaAdministrador;
 import org.json.JSONObject;
 
 /**
@@ -27,8 +28,9 @@ import org.json.JSONObject;
  *          116720428Kenneth Ariel Chaves Herrera
  *          702000163 Luis Venegas Ulloa
  */
-@WebServlet(name = "ServletPrincipal", urlPatterns = {"/ServletPrincipal"})
-public class ServletPrincipal extends HttpServlet {
+@MultipartConfig
+@WebServlet(name = "servletVentas", urlPatterns = {"/servletVentas"})
+public class servletVentas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,16 +43,24 @@ public class ServletPrincipal extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.setContentType("application/json;charset=UTF-8");
+        response.setContentType("aplication/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            JSONObject r =new JSONObject();
-            r.put("complementos",  ServicioComplemento.getInstancia().datosJSON(ServicioComplemento.getInstancia().complementos()));
-            r.put("pizzas", ServicioPizza.obtenerInstancia().datosJSON(ServicioPizza.obtenerInstancia().pizzas()));
-           out.print(r.toString());
-           
-        } catch (JAXBException ex) {
-            Logger.getLogger(ServletPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JSONObject aux = new JSONObject();
+
+            String fechaI = request.getParameter("fechai");
+            String fechaF = request.getParameter("fechaf");
+//
+//            Date fi = new Date(Long.parseLong(fechaI));
+//            Date ff = new Date(Long.parseLong(fechaF));
+            ArrayList<Factura> obj = new ArrayList();
+            obj = ServicioPizzaAdministrador.getInstancia().listarFacturaFecha(fechaI, fechaF);
+
+            aux.put("Factura", ServicioPizzaAdministrador.getInstancia().getGson(obj));
+            System.out.print(obj.toString());
+
+            out.print(aux.toString(0));
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

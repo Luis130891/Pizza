@@ -6,12 +6,16 @@
 package modelo;
 
 /**
- *
- * @author Luis Venegas Ulloa
+ *      EIF209 - Programación 4 – Proyecto #2 
+ *      Junio 2020 
+ *          Autores: 
+ *          116720428Kenneth Ariel Chaves Herrera
+ *          702000163 Luis Venegas Ulloa
  */
 public class Complemento {
     private String nombre;
     private double precio;
+    private int cantidad; 
     private int id;
 
     @Override
@@ -25,9 +29,19 @@ public class Complemento {
     public Complemento(String nombre, double precio, int id) {
         this.nombre = nombre;
         this.precio = precio;
+        this.cantidad=1;
         this.id = id;
     }
 
+    
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
     public String getNombre() {
         return nombre;
     }

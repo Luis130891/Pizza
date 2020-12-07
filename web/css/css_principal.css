@@ -34,7 +34,7 @@ header{
     flex-direction: column;
 }
 
-#categoria input{
+#categoria >button{
     height: 50px;
     background-color: white;
     border-style: none;
@@ -73,7 +73,7 @@ table{
 }
 
 .btn{
-    background-image: url('imagenes/car.png');
+    background-image: url('../imagenes/car.png');
     background-repeat: no-repeat;
     width: 90px;
     height: 90px;
@@ -91,7 +91,7 @@ table{
 }
 
 #hCar{
-    background-image: url('imagenes/car.png');
+    background-image: url('../imagenes/car.png');
     background-repeat: no-repeat;
     height:inherit;
     width: 5%;
@@ -108,6 +108,64 @@ table{
     font-weight: 900;
 }
 
-.total{
-/*    height: inherit;*/
+
+.borrar{
+     background-image: url('../imagenes/eliminar.png');
+    background-repeat: no-repeat;
+    width: 90px;
+    height: 90px;
+    background-size:50px;
+    border: none;
+    background-color: transparent;
+    background-position: center;
+}
+
+
+
+
+
+.enviar{
+     background-image: url('../imagenes/pago_efectivo.png');
+    background-repeat: no-repeat;
+    width: 90px;
+    height: 90px;
+    background-size:50px;
+    border: none;
+    background-color: transparent;
+    background-position: center;
+}
+
+.pago_tarjeta{
+    background-image: url('../imagenes/pago_tarjeta.png');
+    background-repeat: no-repeat;
+    width: 90px;
+    height: 90px;
+    background-size:50px;
+    border: none;
+    background-color: transparent;
+    background-position: center;
+}
+
+.h{
+    height: 100%;
+    background-size:40%;
+    border: none;
+    background-color: transparent;
+    background-position: center;
+    position: relative;
+    float:right;
+    padding: 0px 15px 0px 15px;
+    color:#0fabbc;
+    text-align: left;
+    font-size: large;
+    font-weight: 900;
+}
+
+.actualizar{
+    width: 90px;
+    height: 90px;
+    background-size:50px;
+    border: none;
+    background-color: transparent;
+    background-position: center;
 }

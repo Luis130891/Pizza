@@ -8,13 +8,16 @@ package modelo;
 import java.util.ArrayList;
 
 /**
- *
- * @author Luis Venegas Ulloa
+ *      EIF209 - Programación 4 – Proyecto #2 
+ *      Junio 2020 
+ *          Autores: 
+ *          116720428Kenneth Ariel Chaves Herrera
+ *          702000163 Luis Venegas Ulloa
  */
 public class Pizza {
     
     private int id;
-    private float tamaño;
+    private String tamaño;
     private int cantidad;
     private String nombre;
     private double precio;
@@ -28,11 +31,11 @@ public class Pizza {
         this.id = id;
     }
 
-    public float getTamaño() {
+    public String getTamaño() {
         return tamaño;
     }
 
-    public void setTamaño(float tamaño) {
+    public void setTamaño(String tamaño) {
         this.tamaño = tamaño;
     }
 
@@ -73,7 +76,7 @@ public class Pizza {
         return "Pizza{" + "id=" + id + ", tama\u00f1o=" + tamaño + ", cantidad=" + cantidad + ", nombre=" + nombre + ", precio=" + precio + ", ingredientes=" + ingredientes + '}';
     }
 
-    public Pizza(int id, float tamaño, int cantidad, String nombre, double precio, ArrayList<Ingrediente> ingredientes) {
+    public Pizza(int id, String tamaño, int cantidad, String nombre, double precio, ArrayList<Ingrediente> ingredientes) {
         this.id = id;
         this.tamaño = tamaño;
         this.cantidad = cantidad;
@@ -82,8 +85,19 @@ public class Pizza {
         this.ingredientes = ingredientes;
     }
 
+    
+    public Pizza(int id, String tamaño,double precio) {
+        this.id = id;
+        this.tamaño = tamaño;
+        this.cantidad = 1;
+        this.nombre = "";
+        this.precio = precio;
+        this.ingredientes = null;
+    }
+
+    
     public Pizza() {
-        this(0,0,0,"",0.0,null);
+        this(0,"",0,"",0.0,null);
     }
 
 }

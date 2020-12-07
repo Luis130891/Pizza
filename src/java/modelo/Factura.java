@@ -7,10 +7,12 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.Date;
-
 /**
- *
- * @author Luis Venegas Ulloa
+ *      EIF209 - Programación 4 – Proyecto #2 
+ *      Junio 2020 
+ *          Autores: 
+ *          116720428Kenneth Ariel Chaves Herrera
+ *          702000163 Luis Venegas Ulloa
  */
 public class Factura {
     private int id;
@@ -18,7 +20,7 @@ public class Factura {
     private boolean  metodo_pago;
     private String estado;
     private Date fecha;
-    private Usuario usuario;
+    private String usuario;
     private ArrayList<Pizza> pizzas;
     private ArrayList<Complemento> complementos;
 
@@ -31,7 +33,7 @@ public class Factura {
         this(0,0.0,false,"",null,null,null,null);
     }
 
-    public Factura(int id, double total, boolean metodo_pago, String estado, Date fecha, Usuario usuario, ArrayList<Pizza> pizzas, ArrayList<Complemento> complementos) {
+    public Factura(int id, double total, boolean metodo_pago, String estado, Date fecha, String usuario, ArrayList<Pizza> pizzas, ArrayList<Complemento> complementos) {
         this.id = id;
         this.total = total;
         this.metodo_pago = metodo_pago;
@@ -82,11 +84,11 @@ public class Factura {
         this.fecha = fecha;
     }
 
-    public Usuario getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 

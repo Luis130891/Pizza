@@ -7,17 +7,14 @@ package servle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.JAXBException;
-import modeoo.dao.ServicioComplemento;
-import modeoo.dao.ServicioPizza;
+import modelo.Factura;
+import modeoo.dao.ServicioPizzaAdministrador;
 import org.json.JSONObject;
 
 /**
@@ -27,8 +24,8 @@ import org.json.JSONObject;
  *          116720428Kenneth Ariel Chaves Herrera
  *          702000163 Luis Venegas Ulloa
  */
-@WebServlet(name = "ServletPrincipal", urlPatterns = {"/ServletPrincipal"})
-public class ServletPrincipal extends HttpServlet {
+@WebServlet(name = "servletVentasEstado", urlPatterns = {"/servletVentasEstado"})
+public class servletVentasEstado extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,15 +38,17 @@ public class ServletPrincipal extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.setContentType("application/json;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            JSONObject r =new JSONObject();
-            r.put("complementos",  ServicioComplemento.getInstancia().datosJSON(ServicioComplemento.getInstancia().complementos()));
-            r.put("pizzas", ServicioPizza.obtenerInstancia().datosJSON(ServicioPizza.obtenerInstancia().pizzas()));
-           out.print(r.toString());
-           
-        } catch (JAXBException ex) {
-            Logger.getLogger(ServletPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JSONObject aux = new JSONObject();
+
+            ArrayList<Factura> obj = new ArrayList<Factura>();
+            obj = ServicioPizzaAdministrador.getInstancia().listarFacturaEstado("EN PREPARACIÓN");
+
+            aux.put("Factura", ServicioPizzaAdministrador.getInstancia().getGson(obj));
+            System.out.print(obj.toString());
+
+            out.print(aux.toString(0));
         }
     }
 
