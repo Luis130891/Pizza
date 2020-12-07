@@ -13,16 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Cliente;
-import modelo.Comentario;
 import modeoo.dao.ServicioClientes;
 import org.json.JSONObject;
 
 /**
  *      EIF209 - Programación 4 – Proyecto #2 
  *      Junio 2020 
- *          Autores: 
- *          116720428Kenneth Ariel Chaves Herrera
+ *      
  *          702000163 Luis Venegas Ulloa
  */
 @MultipartConfig

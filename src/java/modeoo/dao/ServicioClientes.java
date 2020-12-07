@@ -27,8 +27,7 @@ import modelo.Usuario;
 /**
  *      EIF209 - Programación 4 – Proyecto #2 
  *      Junio 2020 
- *          Autores: 
- *          116720428Kenneth Ariel Chaves Herrera
+
  *          702000163 Luis Venegas Ulloa
  */
 public class ServicioClientes implements Serializable {

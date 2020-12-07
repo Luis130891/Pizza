@@ -14,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.Properties;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -26,8 +25,7 @@ import modelo.Pizza;
 /**
  *      EIF209 - Programación 4 – Proyecto #2 
  *      Junio 2020 
- *          Autores: 
- *          116720428Kenneth Ariel Chaves Herrera
+ *      
  *          702000163 Luis Venegas Ulloa
  */
 public class ServicioPizzaAdministrador implements Serializable {
